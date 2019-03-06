@@ -1,0 +1,11 @@
+<div>
+	<input type="text" [(ngModel)]="searchText" placeholder="Search"/>
+	<div *ngFor="let news of newsItems | newsSearch:searchText; let newsId = index">
+		<h3>{{news.title | uppercase}}</h3>
+		<p [ngClass]="{collapsed: selectedNewsId != newsId}">
+			{{news.body}}
+		</p>
+		<a href (click)="expandNews(newsId)"
+			*ngIf="selectedNewsId != newsId">More...</a>
+	</div>
+</div>
